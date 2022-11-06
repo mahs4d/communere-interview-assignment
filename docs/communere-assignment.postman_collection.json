@@ -1,0 +1,209 @@
+{
+	"info": {
+		"_postman_id": "7dc628c4-b1bc-4acc-a555-43ba6971e541",
+		"name": "communere-assignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5130343"
+	},
+	"item": [
+		{
+			"name": "create_token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"myuser\",\n    \"password\": \"mypass\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/tokens",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"tokens"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create_user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"mydeveloper\",\n    \"password\": \"mydeveloper\",\n    \"role\": \"DEVELOPER\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_all_tasks",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJteXVzZXIifQ.kxV1azeFe3C1_Xeppm5WePGcqk55XMN3Cob8JNperSU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/projects/:project_id/tasks",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"projects",
+						":project_id",
+						"tasks"
+					],
+					"variable": [
+						{
+							"key": "project_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_my_tasks",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJteWRldmVsb3BlciJ9._zRK_tUcNbEKHmuvnxqbCU-Zia1my47FGIXWmdwle7g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/projects/:project_id/my-tasks",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"projects",
+						":project_id",
+						"my-tasks"
+					],
+					"variable": [
+						{
+							"key": "project_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "assign_task",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJteXVzZXIifQ.kxV1azeFe3C1_Xeppm5WePGcqk55XMN3Cob8JNperSU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"assignee_username\": \"mydeveloper\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/projects/:project_id/tasks/:task_id/assignee",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"projects",
+						":project_id",
+						"tasks",
+						":task_id",
+						"assignee"
+					],
+					"variable": [
+						{
+							"key": "project_id",
+							"value": "1"
+						},
+						{
+							"key": "task_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:5000",
+			"type": "string"
+		}
+	]
+}

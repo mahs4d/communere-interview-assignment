@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "communere-solution"
+version = "0.1.0"
+description = "communere interview assignment"
+authors = ["Mahdi Sadeghi <mahdi74sadeghi@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "communere_solution"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+flask = "^2.2.2"
+pyjwt = "^2.6.0"
+pydantic = "^1.10.2"
+sqlalchemy = "^1.4.43"
+dependency-injector = "^4.40.0"
+uwsgi = "^2.0.21"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
